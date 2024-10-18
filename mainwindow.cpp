@@ -65,7 +65,7 @@ MainWindow::~MainWindow()
 QString MainWindow::calculation(bool *ok)
 {
     double result = 0;
-    if (operands.size() >= 2 && opcodes.size() > 0) {
+    if (operands.size() == 2 && opcodes.size() > 0) {
         //取操作数
         double operand1 = operands.front().toDouble();
         operands.pop_front();
@@ -115,7 +115,7 @@ void MainWindow::btnNumClicked()
 
     ui->display->setText(operand);
 
-    //ui->statusbar->showMessage( qobject_cast<QPushButton*>(sender())->text() + "btn clicked");
+    ui->statusbar->showMessage( qobject_cast<QPushButton*>(sender())->text() + "btn clicked");
 
 }
 
@@ -158,7 +158,7 @@ void MainWindow::btnBinaryOperatorClicked()
         operands.push_back(operand);
         operand = "";
 
-        // opcodes.push_back(opcode);
+        opcodes.push_back(opcode);
     }
 
     QString result = calculation();
